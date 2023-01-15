@@ -1,0 +1,71 @@
+<div class="fixed top-2  rounded-xl bg-white p-4 shadow-2xl shadow-white/40" style="left: 32%;width: 60%">
+
+    <form class="flex items-center space-x-6" style="margin-left: 25%;">
+        <div class="shrink-0">
+            <img id="output" class="object-cover w-16 h-16 rounded-full"
+                src="https://cdn.pixabay.com/photo/2016/04/22/04/57/graduation-1345143__340.png" alt="profile photo" />
+        </div>
+        <label class="block">
+            <span class="sr-only">Choose File</span>
+            <input id="fileimg" onchange="loadFile(event)" type="file" accept="image/png, image/gif, image/jpeg"
+                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+        </label>
+    </form>
+
+    <div class="flex mt-5 justify-between items-center">
+        <input id="nom" type="text"
+            class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500"
+            placeholder="Nom">
+        <input id="prenom" type="text"
+            class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500"
+            placeholder="Prenom">
+
+        <div class="flex justify-center items-center space-x-2">
+
+            <button onclick="addEtudiant()" type="button"
+                class="btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 font-medium rounded">
+                Ajouter
+            </button>
+        </div>
+    </div>
+    <div class="flex mt-5 justify-between items-center">
+        <select id="selfil"
+            class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500 focus:outline-none appearance-none">
+            <option disabled selected>choses votre Filière </option>
+        </select>
+        <select id="selgrp"
+            class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500 focus:outline-none appearance-none">
+            <option disabled selected>choses votre Groupe</option>
+        </select>
+    </div>
+    <p class="text-red-500 text-xs mt-2 italic text-center" id="erretudiant"></p>
+</div>
+
+
+<div class="fixed  rounded-xl bg-white p-4 shadow-2xl shadow-white/40 overflow-y-scroll" style="left: 32%;top: 36%;;width: 60%;height:60%;" >
+    <table class="min-w-max w-full table-auto">
+        <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+
+                <th class="py-3 px-6 text-left">Étudiant</th>
+                <th class="py-3 px-6 text-left">Filière</th>
+                <th class="py-3 px-6 text-left">Niveau</th>
+                <th class="py-3 px-6 text-left">Groupe</th>
+                <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tableEtudiant" class="text-gray-600 text-sm font-light " >
+           
+
+        </tbody>
+    </table>
+</div>
+
+
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>

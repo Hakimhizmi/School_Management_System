@@ -1,0 +1,35 @@
+<div class="fixed top-4  rounded-xl bg-white p-4 shadow-2xl shadow-white/40" style="left: 32%;width: 60%;">
+    <div  class="flex justify-between items-center">
+        <input id="slugSalle" required type="text" class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500" placeholder="Ajouter Slug de Salle" >
+        <input id="desSalle" required type="text" class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500" placeholder="Ajouter description de Salle">
+       
+        <div class="flex justify-center items-center space-x-2">
+            
+            <button onclick="adddataSalle()" type="button" class="btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 font-medium rounded"
+                >
+                Ajouter
+            </button>
+        </div>
+    </div>
+    <p class="text-red-500 text-xs mt-3 text-center italic" id="errsalle"></p>
+</div>
+
+
+<div class="fixed  rounded-xl bg-white p-4 shadow-2xl shadow-white/40 overflow-y-scroll" style="left: 32%;top: 18%;;width: 60%;height: 78%;">
+                <table class="min-w-max w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">Numero</th>
+                            <th class="py-3 px-6 text-left">Slug</th>
+                            <th class="py-3 px-6 text-left">Description</th>
+                            <th class="py-3 px-6 text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableSalle" class="text-gray-600 text-sm font-light">
+                        
+                        
+                           
+                    </tbody>
+                </table>
+         
+    </div>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Emplois Alpha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
+    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.4/dist/flowbite.min.css" />
+
+    <script src="script\section.js"></script>
+    <script src="script\groupe.js"></script>
+    <script src="script\etudiant.js"></script>
+    <script src="script\salle.js"></script>
+    <script src="script\formateur.js"></script>
+    <script src="script\timetable.js"></script>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+
+    <link rel="stylesheet" href="node_modules/timetable.js-master/dist/styles/timetablejs.css">
+    <script src="node_modules/timetable.js-master/dist/scripts/timetable.js"></script>
+    
+
+    <style>
+        .overflow-y-scroll::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+
+        .overflow-y-scroll::-webkit-scrollbar {
+            width: 4px;
+            background-color: #F5F5F5;
+        }
+        .overflow-y-scroll::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #1e293bcb;
+        }
+    </style>
+
+</head>
+
+<body class="bg-slate-200">
+    <div class='flex  main-content items-center justify-center min-h-screen bg-slate-200'>
+        <div class='flex flex-col divbut'>
+            <button id="gesSec" type='button'
+                class='flex break-inside bg-black rounded-3xl px-8 py-4 mb-4 w-full dark:bg-slate-800 dark:text-white'>
+                <div class='flex items-center justify-between flex-1'>
+                    <span class='text-lg font-medium text-white'>Gestion des Section</span>
+                    <svg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path fillRule='evenodd' clipRule='evenodd'
+                            d='M0 8.71423C0 8.47852 0.094421 8.25246 0.262491 8.08578C0.430562 7.91911 0.658514 7.82547 0.896201 7.82547H13.9388L8.29808 2.23337C8.12979 2.06648 8.03525 1.84013 8.03525 1.60412C8.03525 1.36811 8.12979 1.14176 8.29808 0.974875C8.46636 0.807989 8.6946 0.714233 8.93259 0.714233C9.17057 0.714233 9.39882 0.807989 9.5671 0.974875L16.7367 8.08499C16.8202 8.16755 16.8864 8.26562 16.9316 8.3736C16.9767 8.48158 17 8.59733 17 8.71423C17 8.83114 16.9767 8.94689 16.9316 9.05487C16.8864 9.16284 16.8202 9.26092 16.7367 9.34348L9.5671 16.4536C9.39882 16.6205 9.17057 16.7142 8.93259 16.7142C8.6946 16.7142 8.46636 16.6205 8.29808 16.4536C8.12979 16.2867 8.03525 16.0604 8.03525 15.8243C8.03525 15.5883 8.12979 15.362 8.29808 15.1951L13.9388 9.603H0.896201C0.658514 9.603 0.430562 9.50936 0.262491 9.34268C0.094421 9.17601 0 8.94995 0 8.71423Z'
+                            fill='white' />
+                    </svg>
+                </div>
+            </button>
+            <button id="gesGrou" type='button'
+                class='flex break-inside  mt-10 bg-black rounded-3xl px-8 py-4 mb-4 w-full dark:bg-slate-800 dark:text-white'>
+                <div class='flex items-center justify-between flex-1'>
+                    <span class='text-lg font-medium text-white'>Gestion des Groupe</span>
+                    <svg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path fillRule='evenodd' clipRule='evenodd'
+                            d='M0 8.71423C0 8.47852 0.094421 8.25246 0.262491 8.08578C0.430562 7.91911 0.658514 7.82547 0.896201 7.82547H13.9388L8.29808 2.23337C8.12979 2.06648 8.03525 1.84013 8.03525 1.60412C8.03525 1.36811 8.12979 1.14176 8.29808 0.974875C8.46636 0.807989 8.6946 0.714233 8.93259 0.714233C9.17057 0.714233 9.39882 0.807989 9.5671 0.974875L16.7367 8.08499C16.8202 8.16755 16.8864 8.26562 16.9316 8.3736C16.9767 8.48158 17 8.59733 17 8.71423C17 8.83114 16.9767 8.94689 16.9316 9.05487C16.8864 9.16284 16.8202 9.26092 16.7367 9.34348L9.5671 16.4536C9.39882 16.6205 9.17057 16.7142 8.93259 16.7142C8.6946 16.7142 8.46636 16.6205 8.29808 16.4536C8.12979 16.2867 8.03525 16.0604 8.03525 15.8243C8.03525 15.5883 8.12979 15.362 8.29808 15.1951L13.9388 9.603H0.896201C0.658514 9.603 0.430562 9.50936 0.262491 9.34268C0.094421 9.17601 0 8.94995 0 8.71423Z'
+                            fill='white' />
+                    </svg>
+                </div>
+            </button>
+            <button id="gesSalle" type='button'
+                class='flex break-inside mt-10 bg-black rounded-3xl px-8 py-4 mb-4 w-full dark:bg-slate-800 dark:text-white'>
+                <div class='flex items-center justify-between flex-1'>
+                    <span class='text-lg font-medium text-white'>Gestion des Salle</span>
+                    <svg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path fillRule='evenodd' clipRule='evenodd'
+                            d='M0 8.71423C0 8.47852 0.094421 8.25246 0.262491 8.08578C0.430562 7.91911 0.658514 7.82547 0.896201 7.82547H13.9388L8.29808 2.23337C8.12979 2.06648 8.03525 1.84013 8.03525 1.60412C8.03525 1.36811 8.12979 1.14176 8.29808 0.974875C8.46636 0.807989 8.6946 0.714233 8.93259 0.714233C9.17057 0.714233 9.39882 0.807989 9.5671 0.974875L16.7367 8.08499C16.8202 8.16755 16.8864 8.26562 16.9316 8.3736C16.9767 8.48158 17 8.59733 17 8.71423C17 8.83114 16.9767 8.94689 16.9316 9.05487C16.8864 9.16284 16.8202 9.26092 16.7367 9.34348L9.5671 16.4536C9.39882 16.6205 9.17057 16.7142 8.93259 16.7142C8.6946 16.7142 8.46636 16.6205 8.29808 16.4536C8.12979 16.2867 8.03525 16.0604 8.03525 15.8243C8.03525 15.5883 8.12979 15.362 8.29808 15.1951L13.9388 9.603H0.896201C0.658514 9.603 0.430562 9.50936 0.262491 9.34268C0.094421 9.17601 0 8.94995 0 8.71423Z'
+                            fill='white' />
+                    </svg>
+                </div>
+            </button>
+            <button id="gesformateur" type='button'
+                class='flex break-inside mt-10 bg-black rounded-3xl px-8 py-4 mb-4 w-full dark:bg-slate-800 dark:text-white'>
+                <div class='flex items-center justify-between flex-1'>
+                    <span class='text-lg font-medium text-white'>Gestion des Formateur</span>
+                    <svg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path fillRule='evenodd' clipRule='evenodd'
+                            d='M0 8.71423C0 8.47852 0.094421 8.25246 0.262491 8.08578C0.430562 7.91911 0.658514 7.82547 0.896201 7.82547H13.9388L8.29808 2.23337C8.12979 2.06648 8.03525 1.84013 8.03525 1.60412C8.03525 1.36811 8.12979 1.14176 8.29808 0.974875C8.46636 0.807989 8.6946 0.714233 8.93259 0.714233C9.17057 0.714233 9.39882 0.807989 9.5671 0.974875L16.7367 8.08499C16.8202 8.16755 16.8864 8.26562 16.9316 8.3736C16.9767 8.48158 17 8.59733 17 8.71423C17 8.83114 16.9767 8.94689 16.9316 9.05487C16.8864 9.16284 16.8202 9.26092 16.7367 9.34348L9.5671 16.4536C9.39882 16.6205 9.17057 16.7142 8.93259 16.7142C8.6946 16.7142 8.46636 16.6205 8.29808 16.4536C8.12979 16.2867 8.03525 16.0604 8.03525 15.8243C8.03525 15.5883 8.12979 15.362 8.29808 15.1951L13.9388 9.603H0.896201C0.658514 9.603 0.430562 9.50936 0.262491 9.34268C0.094421 9.17601 0 8.94995 0 8.71423Z'
+                            fill='white' />
+                    </svg>
+                </div>
+            </button>
+            <button id="gesEtu" type='button'
+                class='flex break-inside mt-10 bg-black rounded-3xl px-8 py-4 mb-4 w-full dark:bg-slate-800 dark:text-white'>
+                <div class='flex items-center justify-between flex-1'>
+                    <span class='text-lg font-medium text-white'>Gestion des étudiants</span>
+                    <svg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path fillRule='evenodd' clipRule='evenodd'
+                            d='M0 8.71423C0 8.47852 0.094421 8.25246 0.262491 8.08578C0.430562 7.91911 0.658514 7.82547 0.896201 7.82547H13.9388L8.29808 2.23337C8.12979 2.06648 8.03525 1.84013 8.03525 1.60412C8.03525 1.36811 8.12979 1.14176 8.29808 0.974875C8.46636 0.807989 8.6946 0.714233 8.93259 0.714233C9.17057 0.714233 9.39882 0.807989 9.5671 0.974875L16.7367 8.08499C16.8202 8.16755 16.8864 8.26562 16.9316 8.3736C16.9767 8.48158 17 8.59733 17 8.71423C17 8.83114 16.9767 8.94689 16.9316 9.05487C16.8864 9.16284 16.8202 9.26092 16.7367 9.34348L9.5671 16.4536C9.39882 16.6205 9.17057 16.7142 8.93259 16.7142C8.6946 16.7142 8.46636 16.6205 8.29808 16.4536C8.12979 16.2867 8.03525 16.0604 8.03525 15.8243C8.03525 15.5883 8.12979 15.362 8.29808 15.1951L13.9388 9.603H0.896201C0.658514 9.603 0.430562 9.50936 0.262491 9.34268C0.094421 9.17601 0 8.94995 0 8.71423Z'
+                            fill='white' />
+                    </svg>
+                </div>
+            </button>
+            <button id="gesdetemp" type='button'
+                class='flex break-inside mt-10 bg-black rounded-3xl px-8 py-4 mb-4 w-full dark:bg-slate-800 dark:text-white'>
+                <div class='flex items-center justify-between flex-1'>
+                    <span class='text-lg font-medium text-white'>Emploi du
+                        temps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <svg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path fillRule='evenodd' clipRule='evenodd'
+                            d='M0 8.71423C0 8.47852 0.094421 8.25246 0.262491 8.08578C0.430562 7.91911 0.658514 7.82547 0.896201 7.82547H13.9388L8.29808 2.23337C8.12979 2.06648 8.03525 1.84013 8.03525 1.60412C8.03525 1.36811 8.12979 1.14176 8.29808 0.974875C8.46636 0.807989 8.6946 0.714233 8.93259 0.714233C9.17057 0.714233 9.39882 0.807989 9.5671 0.974875L16.7367 8.08499C16.8202 8.16755 16.8864 8.26562 16.9316 8.3736C16.9767 8.48158 17 8.59733 17 8.71423C17 8.83114 16.9767 8.94689 16.9316 9.05487C16.8864 9.16284 16.8202 9.26092 16.7367 9.34348L9.5671 16.4536C9.39882 16.6205 9.17057 16.7142 8.93259 16.7142C8.6946 16.7142 8.46636 16.6205 8.29808 16.4536C8.12979 16.2867 8.03525 16.0604 8.03525 15.8243C8.03525 15.5883 8.12979 15.362 8.29808 15.1951L13.9388 9.603H0.896201C0.658514 9.603 0.430562 9.50936 0.262491 9.34268C0.094421 9.17601 0 8.94995 0 8.71423Z'
+                            fill='white' />
+                    </svg>
+                </div>
+            </button>
+
+
+        </div>
+        <div id="includedContent"></div>
+    </div>
+
+
+
+    <script>
+        $('#gesSec').click(function () {
+            $('.divbut').animate({
+                marginRight: +900
+            }, 'slow', 'swing');
+
+            setTimeout(() => {
+                $("#includedContent").load("section.html")
+                setTimeout(() => {
+                    getdata();
+                }, 200);
+            }, 700);
+
+        });
+        $('#gesGrou').click(function () {
+            $('.divbut').animate({
+                marginRight: +900
+            }, 'slow', 'swing');
+
+            setTimeout(() => {
+                $("#includedContent").load("groupe.html")
+                setTimeout(() => {
+                    getSelectfilier();
+                    getdatagrp();
+                }, 200);
+            }, 700);
+        });
+        $('#gesEtu').click(function () {
+            $('.divbut').animate({
+                marginRight: +900
+            }, 'slow', 'swing');
+
+            setTimeout(() => {
+                $("#includedContent").load("etudiant.html")
+                setTimeout(() => {
+                    getSelection();
+                    getdataEtu();
+                }, 200);
+            }, 700);
+        });
+        $('#gesSalle').click(function () {
+            $('.divbut').animate({
+                marginRight: +900
+            }, 'slow', 'swing');
+
+            setTimeout(() => {
+                $("#includedContent").load("salle.html")
+                setTimeout(() => {
+                    getdatasalle();
+                }, 200);
+            }, 700);
+        });
+        $('#gesformateur').click(function () {
+            $('.divbut').animate({
+                marginRight: +900
+            }, 'slow', 'swing');
+
+            setTimeout(() => {
+                $("#includedContent").load("formateur.html")
+                setTimeout(() => {
+                    getFormateur();
+                }, 200);
+            }, 700);
+        });
+        $('#gesdetemp').click(function () {
+            $('.divbut').animate({
+                marginRight: +900
+            }, 'slow', 'swing');
+
+            setTimeout(() => {
+                $("#includedContent").load("emtemp.html")
+                setTimeout(() => {
+                    var timetable = new Timetable();
+                    timetable.setScope(8, 19);
+                    timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thursday',
+                        'Friday', 'Saturday'
+                    ]);
+                    var renderer = new Timetable.Renderer(timetable);
+                    renderer.draw('.timetable');
+                    select_formateur();
+                    
+                }, 200);
+            }, 700);
+        });
+    </script>
+
+</body>
+
+</html>

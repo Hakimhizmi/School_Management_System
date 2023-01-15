@@ -1,0 +1,27 @@
+<div class="fixed top-3  rounded-xl bg-white p-4 shadow-2xl shadow-white/40" style="left: 32%;width: 60%">
+    <select id="getformateur" onchange="getdata_timetable()"
+    class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500 focus:outline-none appearance-none">
+    <option disabled selected>Choisissez formateur</option>
+    
+</select>
+<div class="flex justify-center items-center space-x-2 mt-5">
+
+    <button onclick="check('add')" type="button"
+        class="btn w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 font-medium rounded">
+        ajouter nouveau
+    </button>
+    <button onclick="check('edit')" type="button" id="edittimetable"
+        class="btn w-full bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 font-medium rounded">
+        edit
+    </button>
+    <p class="text-red-500 text-xs mt-2 italic text-center" id="err_add"></p>
+
+
+
+</div>
+
+
+</div>
+<div  class="fixed  rounded-xl bg-white p-4 shadow-2xl shadow-white/40 " style="left: 32%;top: 25%;;width: 60%;height:70%;" >
+    <div class="timetable "></div>
+</div>

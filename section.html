@@ -1,0 +1,67 @@
+<div class="fixed  bottom-6 top-4  h-8 md:h-full max-w-4xl mx-auto rounded-xl bg-white p-4 shadow-2xl shadow-white/40 overflow-y-scroll" style="height: 95%;width: 55%;left: 32%;width: 60%" >
+
+    <div class="flex justify-between">
+        <input
+      id="filiere"
+      type="text"
+      name="default"
+      placeholder="Filière"
+      class="px-4 ml-2 py-2 mt-8 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+    />
+    <div class="relative ml-10 mt-9 inline-flex">
+        <svg class="w-2 h-2  absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fill-rule="nonzero"/></svg>
+        <select id="niveau_form" class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+          <option disabled selected>chose Niveau de formation</option>
+          <option value="Technicien">Technicien</option>
+          <option value="Qualification">Qualification</option>
+          <option value="Spécialisation">Spécialisation</option>
+        </select>
+      </div>
+      <button onclick="adddata()" class="group relative mt-8 ml-10 h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow">
+        <div class="absolute inset-0 w-3 bg-slate-900 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+        <span class="relative text-black group-hover:text-white">Ajouter </span>
+      </button>
+    </div>
+    <p class="text-red-500 text-xs mt-3 text-center italic" id="errsection"></p>
+
+
+
+    <header class="px-5 py-4 border-b border-gray-100">
+        <div class="font-semibold text-gray-800">Liste des Section</div>
+    </header>
+
+    <div class="p-3">
+        <div class="overflow-x-auto overflow-y-auto">
+            <div class="overflow-x-auto p-3">
+                <table class="table-auto w-full">
+                    <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                        <tr>
+                            <th class="p-2">
+                                <div class="font-semibold text-left">Filière</div>
+                            </th>
+                            <th class="p-2">
+                                <div class="font-semibold text-left">Niveau de formation</div>
+                            </th>
+                    
+                            <th class="p-2">
+                                <div class="font-semibold text-center">Action</div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="table" class="text-sm divide-y divide-gray-100">
+                       
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

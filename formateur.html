@@ -1,0 +1,69 @@
+<div class="fixed top-2  rounded-xl bg-white p-4 shadow-2xl shadow-white/40" style="left: 32%;width: 66%;">
+    <div class="flex justify-between items-center">
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-700" for="file_input">excel sheet structure</label><img src="excel.png" >
+    </div>
+    
+    <input
+        class="block w-full mt-1 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        id="file_input" type="file">
+
+    <div class="flex items-center justify-center space-x-2 my-5">
+        <span class="h-px w-full bg-gray-400"></span>
+        <span class="text-gray-600 font-normal">or</span>
+        <span class="h-px w-full bg-gray-400"></span>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <input id="nom_for" required type="text"
+            class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500"
+            placeholder="Nom">
+        <input id="prenom_form" required type="text"
+            class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500"
+            placeholder="Prenom">
+        <input id="matr" type="number" required type="text"
+            class="w-full bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500"
+            placeholder="matricule ">
+    </div>
+    <div class="flex justify-between items-center mt-2">
+        <label for="dateNis" class="font-bold mb-1 text-gray-700 block">Date Nissance</label>
+        <input id="dateNis" type="date" required type="text"
+            class="w-full ml-4 bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500">
+        <label for="dateEm" class="font-bold mb-1 text-gray-700 block">Date Embauche</label>
+        <input id="dateEm" type="date" required type="text"
+            class="w-full ml-4 bg-gray-100 rounded p-2 mr-4 border focus:outline-none focus:border-blue-500">
+    </div>
+
+    <button onclick="addFormateur()" type="button"
+        class="btn mt-5 bg-blue-500 w-full  hover:bg-blue-600 text-white px-4 py-2 font-medium rounded">
+        Ajouter
+    </button>
+    <p class="text-red-500 text-xs mt-3 text-center italic" id="errforma"></p>
+</div>
+
+</div>
+
+
+<div class="fixed  rounded-xl bg-white p-4 shadow-2xl shadow-white/40 overflow-y-scroll"
+    style="left: 32%;top: 55%;;width: 66%;height: 44%;">
+    <table class="min-w-max w-full table-auto">
+        <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">matricule</th>
+                <th class="py-3 px-6 text-left">Nom</th>
+                <th class="py-3 px-6 text-left">Prenom</th>
+                <th class="py-3 px-6 text-left">date Naissance</th>
+                <th class="py-3 px-6 text-left">date Embauche</th>
+                <th class="py-3 px-6 text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableformateur" class="text-gray-600 text-sm font-light">
+
+
+
+        </tbody>
+    </table>
+    <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+        <span class="h-px w-full bg-gray-100"></span>
+    </div>
+
+</div>
